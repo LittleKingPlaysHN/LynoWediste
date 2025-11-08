@@ -23,11 +23,13 @@
     <meta name="twitter:description" content="El mejor bot multipropósito para tu servidor de Discord que esperas para invitarlo.">
     <meta name="twitter:image" content="https://lynobot.wordpress.com/wp-content/uploads/2025/11/lynobot-thumb.png">
 
-    <!-- CSS y JS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="index.css">
-    <script type="module" src="index.js"></script>
   </head>
   <body>
+
+    <!-- Contenedor de React -->
+    <div id="root"></div>
 
     <!-- Música de fondo -->
     <audio id="musicaFondo" loop>
@@ -35,5 +37,35 @@
       Tu navegador no soporta audio HTML5.
     </audio>
 
+    <!-- Botón para reproducir música -->
+    <button id="playButton" style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      z-index: 1000;
+    ">
+      🎵 Reproducir música
+    </button>
+
+    <!-- JS (React se inicializa después de cargar el DOM) -->
+    <script type="module" src="index.js"></script>
+    <script>
+      const musica = document.getElementById('musicaFondo');
+      const playButton = document.getElementById('playButton');
+
+      playButton.addEventListener('click', () => {
+        musica.play().catch(err => console.log("Error al reproducir la música:", err));
+        playButton.style.display = 'none';
+      });
+    </script>
   </body>
 </html>
+
+
