@@ -27,11 +27,20 @@
   </head>
   <body>
 
-      <!-- Musica De Fondo -->
-    <div id="root"></div>
-    <audio autoplay loop>
-      <source src="https://s19.aconvert.com/convert/p3r68-cdx67/jv4j5-e4qqa.mp3" type="audio/mpeg">
-    </audio>
+      <!-- Música de fondo -->
+<audio id="musicaFondo" loop>
+  <source src="https://s19.aconvert.com/convert/p3r68-cdx67/jv4j5-e4qqa.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio>
+<script>
+  const musica = document.getElementById('musicaFondo');
+  function iniciarMusica() {
+    musica.play().catch(err => console.log("Error al reproducir la música:", err));
+    document.removeEventListener('click', iniciarMusica);
+  }
+  document.addEventListener('click', iniciarMusica);
+</script>
   </body>
 </html>
+
 
