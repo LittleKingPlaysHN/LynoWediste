@@ -32,40 +32,26 @@
     <div id="root"></div>
 
     <!-- Música de fondo -->
-    <audio id="musicaFondo" loop>
-      <source src="https://s19.aconvert.com/convert/p3r68-cdx67/jv4j5-e4qqa.mp3" type="audio/mpeg">
-      Tu navegador no soporta audio HTML5.
-    </audio>
+<audio id="musicaFondo" loop>
+  <source src="https://s17.aconvert.com/convert/p3r68-cdx67/imfta-8j2md.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio>
 
-    <!-- Botón para reproducir música -->
-    <button id="playButton" style="
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 15px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-      z-index: 1000;
-    ">
-      🎵 Reproducir música
-    </button>
+<script>
+  const musica = document.getElementById('musicaFondo');
 
-    <!-- JS (React se inicializa después de cargar el DOM) -->
-    <script type="module" src="index.js"></script>
-    <script>
-      const musica = document.getElementById('musicaFondo');
-      const playButton = document.getElementById('playButton');
+  // Función que inicia la música
+  function iniciarMusica() {
+    musica.play().catch(err => console.log("Error al reproducir la música:", err));
+    // Quitamos el listener para que solo se ejecute la primera vez
+    document.removeEventListener('click', iniciarMusica);
+  }
 
-      playButton.addEventListener('click', () => {
-        musica.play().catch(err => console.log("Error al reproducir la música:", err));
-        playButton.style.display = 'none';
-      });
-    </script>
+  // Escuchamos el primer clic en cualquier parte de la página
+  document.addEventListener('click', iniciarMusica);
+</script>
   </body>
 </html>
+
 
 
